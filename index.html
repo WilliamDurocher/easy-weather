@@ -1,12 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Easy Weather</title>
 </head>
+
 <body>
-    
+    <div class="main-container">
+        <div class="weather-container">
+            <div class="weather-main-info-left">
+                <div class="main-desc">Partially Cloudy</div>
+                <img class="main-temp-icon" src="http://openweathermap.org/img/wn/03n@2x.png"></img>
+                <div class="main-temp">-10 °C</div>
+                <div class="main-details-container">
+                    <div class="detail">
+                        <img class="detail-icon" src="http://openweathermap.org/img/wn/03n@2x.png"></img>
+                        <div class="detail-info-container">
+                            <div class="detail-name">Feels Like</div>
+                            <div class="detail-value" id="feelsLike">-22 °C</div>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <img class="detail-icon" src="http://openweathermap.org/img/wn/03n@2x.png"></img>
+                        <div class="detail-info-container">
+                            <div class="detail-name">Humidity</div>
+                            <div class="detail-value" id="humidity">45%</div>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <img class="detail-icon" src="http://openweathermap.org/img/wn/03n@2x.png"></img>
+                        <div class="detail-info-container">
+                            <div class="detail-name">Chances of rain</div>
+                            <div class="detail-value" id="rain">10%</div>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <img class="detail-icon" src="http://openweathermap.org/img/wn/03n@2x.png"></img>
+                        <div class="detail-info-container">
+                            <div class="detail-name">Wind Speed</div>
+                            <div class="detail-value" id="windSpeed">25 km/h</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="weather-main-info-right">
+                <div class="city">Montreal</div>
+                <div class="date">Sunday January 2nd, 2022</div>
+                <div class="time">11:52pm</div>
+                <div class="options-container">
+                    <input type="text" placeholder="Search..." class="search"></div>
+                    <div class="metrics">°F</div>
+                    <div class="theme">Light Mode</div>
+                </div>
+            </div>
+        
+        <div class="forecast-container">
+            <div class="forecast">
+                <div class="forecast-day">Monday</div>
+                <div class="forecast-high-value" id="highForecast">-5 °C</div>
+                <div class="forecast-low-value" id="lowForecast">-17 °C</div>
+                <img class="forecast-icon" src="http://openweathermap.org/img/wn/03n@2x.png"></img>
+            </div>
+            <div class="forecast">
+                <div class="forecast-day">Tuesday</div>
+                <div class="forecast-high-value" id="highForecast">-5 °C</div>
+                <div class="forecast-low-value" id="lowForecast">-17 °C</div>
+                <img class="forecast-icon" src="http://openweathermap.org/img/wn/03n@2x.png"></img>
+            </div>
+            <div class="forecast">
+                <div class="forecast-day">Wednesday</div>
+                <div class="forecast-high-value" id="highForecast">-5 °C</div>
+                <div class="forecast-low-value" id="lowForecast">-17 °C</div>
+                <img class="forecast-icon" src="http://openweathermap.org/img/wn/03n@2x.png"></img>
+            </div>
+            <div class="forecast">
+                <div class="forecast-day">Thursday</div>
+                <div class="forecast-high-value" id="highForecast">-5 °C</div>
+                <div class="forecast-low-value" id="lowForecast">-17 °C</div>
+                <img class="forecast-icon" src="http://openweathermap.org/img/wn/03n@2x.png"></img>
+            </div>
+            <div class="forecast">
+                <div class="forecast-day">Friday</div>
+                <div class="forecast-high-value" id="highForecast">-5 °C</div>
+                <div class="forecast-low-value" id="lowForecast">-17 °C</div>
+                <img class="forecast-icon" src="http://openweathermap.org/img/wn/03n@2x.png"></img>
+            </div>
+            <div class="forecast">
+                <div class="forecast-day">Saturday</div>
+                <div class="forecast-high-value" id="highForecast">-5 °C</div>
+                <div class="forecast-low-value" id="lowForecast">-17 °C</div>
+                <img class="forecast-icon" src="http://openweathermap.org/img/wn/03n@2x.png"></img>
+            </div>
+            <div class="forecast">
+                <div class="forecast-day">Sunday</div>
+                <div class="forecast-high-value" id="highForecast">-5 °C</div>
+                <div class="forecast-low-value" id="lowForecast">-17 °C</div>
+                <img class="forecast-icon" src="http://openweathermap.org/img/wn/03n@2x.png"></img>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
+<script src="main.js"></script>
+
 </html>
