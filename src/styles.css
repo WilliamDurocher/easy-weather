@@ -8,17 +8,24 @@ html{
     color: white;
 }
 
+body, html {
+    margin: 0;
+  }
 .main-container{
-    padding: 4rem;
+
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     /* gap: 250px 0; */
+    height: 100vh;
+
 }
 
 .weather-container{
     display: flex;
     justify-content: space-between;
+    padding: 4rem;
 }
 
 
@@ -74,24 +81,59 @@ html{
 
 .city{
     font-size: 30px;
-    font-weight: 700;
+    font-weight: 600;
 }
 .date, .time{
 font-size: 24px;
 }
 
+/*** OPTIONS CONTAINER***/
+
+.options-container{
+    display: grid;
+    gap: 20px;
+
+}
+
+.options-search-container
+{
+    display: flex;
+    gap: 5px;
+}
+
+
+
+.options-search-container > span:hover
+{
+  cursor: pointer;
+}
 .search{
+    height: 30px;
+    width: 150px;
+    border-radius: 15px;
+    box-shadow: none;
+    border: none;
+}
+
+#metricsC{
+
+    display: none;
+}
+.theme{
     margin-top: 50px;
+
 }
 
 
 /*** FORECAST ***/
 
 .forecast-container{
+    display: none;
     text-align: center;
-    display: flex;
+    /* display: flex; */
     justify-content: space-evenly;
-    flex: 1 1 100%;
+    padding-top: auto;
+    padding-bottom: 4rem;
 }
 .forecast-day{
     font-size: 22px;
@@ -106,3 +148,24 @@ font-size: 24px;
     font-size: 18px;
 }
 
+/*** HOURLY ***/
+
+.hourly-container{
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: auto;
+    padding-bottom: 4rem;
+}
+
+.hourly-hour{
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.hourly-temp{
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.hourly-icon{}

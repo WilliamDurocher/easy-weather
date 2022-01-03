@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d9412251d2.js" crossorigin="anonymous"></script>
     <title>Easy Weather</title>
 </head>
 
 <body>
     <div class="main-container">
+
         <div class="weather-container">
             <div class="weather-main-info-left">
                 <div class="main-desc">Partially Cloudy</div>
@@ -51,12 +53,64 @@
                 <div class="date">Sunday January 2nd, 2022</div>
                 <div class="time">11:52pm</div>
                 <div class="options-container">
-                    <input type="text" placeholder="Search..." class="search"></div>
-                    <div class="metrics">°F</div>
                     <div class="theme">Light Mode</div>
+                    <div class="metrics" id="metricsC">Switch to °C</div>
+                    <div class="metrics" id="metricsF">Switch to °F</div>
+                    <div class="options-search-container">
+                        <input type="text" placeholder="  Search..." class="search" id="srch">
+                        <span class="fa-stack" style="vertical-align: top;">
+                            <i class="far fa-circle fa-stack-2x"></i>
+                            <i class="fas fa-search fa-stack-1x"></i>
+                        </span>
+                    </div>
                 </div>
             </div>
-        
+        </div>
+
+        <div class="hourly-container">
+            <div class="hourly">
+                <div class="hourly-hour">12 pm</div>
+                <div class="hourly-temp">-5 °C</div>
+                <img class="hourly-icon" src="http://openweathermap.org/img/wn/03n@2x.png"></img>
+            </div>
+            <div class="hourly">
+                <div class="hourly-hour">1 pm</div>
+                <div class="hourly-temp">-5 °C</div>
+                <img class="hourly-icon" src="http://openweathermap.org/img/wn/03n@2x.png"></img>
+            </div>
+            <div class="hourly">
+                <div class="hourly-hour">2 pm</div>
+                <div class="hourly-temp">-8 °C</div>
+                <img class="hourly-icon" src="http://openweathermap.org/img/wn/03n@2x.png"></img>
+            </div>
+            <div class="hourly">
+                <div class="hourly-hour">3 pm</div>
+                <div class="hourly-temp">-7 °C</div>
+                <img class="hourly-icon" src="http://openweathermap.org/img/wn/03n@2x.png"></img>
+            </div>
+            <div class="hourly">
+                <div class="hourly-hour">4 pm</div>
+                <div class="hourly-temp">-8 °C</div>
+                <img class="hourly-icon" src="http://openweathermap.org/img/wn/03n@2x.png"></img>
+            </div>
+            <div class="hourly">
+                <div class="hourly-hour">5 pm</div>
+                <div class="hourly-temp">-8 °C</div>
+                <img class="hourly-icon" src="http://openweathermap.org/img/wn/03n@2x.png"></img>
+            </div>
+            <div class="hourly">
+                <div class="hourly-hour">6 pm</div>
+                <div class="hourly-temp" >-9 °C</div>
+                <img class="hourly-icon" src="http://openweathermap.org/img/wn/03n@2x.png"></img>
+            </div>
+            <div class="hourly">
+                <div class="hourly-hour">7 pm</div>
+                <div class="hourly-temp">-10 °C</div>
+                <img class="hourly-icon" src="http://openweathermap.org/img/wn/03n@2x.png"></img>
+            </div>
+        </div>
+
+
         <div class="forecast-container">
             <div class="forecast">
                 <div class="forecast-day">Monday</div>
@@ -102,7 +156,7 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
 </body>
 <script src="main.js"></script>
 
