@@ -21,8 +21,13 @@ function getWeekDay(unixTimestamp){
     return new Date(unixTimestamp * 1000).toLocaleDateString('en-US', { weekday:"long"});
 }
 
-function getTime(unixTimestamp){
+function getHourMinutes(unixTimestamp){
     return new Date(unixTimestamp * 1000).toLocaleTimeString('en-US',{ hour: 'numeric', minute: '2-digit', hour12: true }).toLowerCase();
+}
+
+function getHour(unixTimestamp){
+    return new Date(unixTimestamp * 1000).toLocaleTimeString('en-US',{ hour: 'numeric', hour12: true }).toLowerCase();
+
 }
 
 function formatTemp(temp){
@@ -46,11 +51,21 @@ function capitalizeEachWord(str) {
     return splitStr.join(' '); 
  }
 
+ function formatCityName(str){
+    return str
+    .replace(/(\s+$|^\s+)/g, '')
+    .replace(/(,\s+)/g, ',')
+    .replace(/(\s+,)/g, ',')
+    .replace(/\s+/g, '+');
+ }
+
 export {
     formatTemp,
     formatWindSpeed,
     getDate,
-    getTime,
+    getHourMinutes,
     capitalizeEachWord,
     getWeekDay,
+    getHour,
+    formatCityName,
 }

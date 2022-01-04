@@ -5,11 +5,12 @@ import * as constants from './constants';
 //Default variables initialization
 
 
-
-const mainContainer = document.querySelector('.main-container');
+const loadingScreen = document.querySelector('.loading-screen');
 const searchBtn = document.querySelector('.options-search-btn');
-const unitsCBtn = document.getElementById('unitsC');
-const unitsFBtn = document.getElementById('unitsF');
+const searchInput = document.querySelector('.search');
+const errorMessage = document.querySelector('.error-message');
+const unitBtnC = document.getElementById('unitC');
+const unitBtnF = document.getElementById('unitF');
 const themeSwitchBtn = document.querySelector('.theme');
 const dailyForecastBtn = document.getElementById('daily');
 const hourlyForecastBtn = document.getElementById('hourly');
@@ -25,24 +26,30 @@ let unitChange = false;
 /**
  *TODO: main application function, gets the weather data from API and sends it to the ui.js fonction that will render the data
  * put in try catch 
- *
+ * TODO: while this function is running, have a splash screen with 3 dots or loading circle that deactivates the UI while the data is loading
  * @params
  *  unit: metric or imperial - metric by default
  *  intial load = false
  */
 async function getWeatherData(InitialLoad = false){
 
-    let cityName = InitialLoad ? constants.DEFAULT_CITY : apiFunc.getFormData();
+    try{
 
-    //do nothing if search btn is clicked with no text
-    if (!cityName){
-        return;
-    }
+    loadingScreen.style.display = 'block';
+
+    let cityName = InitialLoad ? constants.DEFAULT_CITY : apiFunc.getFormData();
 
     if (unitChange){
         cityName = lastCity;
         unitChange = false;
     }
+
+    //do nothing if search btn is clicked with no text
+    if (!cityName){
+        loadingScreen.style.display = 'none';
+        return;
+    }
+
 
     //If we need to change the unit, we don't want to lose the city we had in the first place
     lastCity = cityName;
@@ -58,34 +65,57 @@ async function getWeatherData(InitialLoad = false){
 
     uiFunc.renderWeatherData(weather, unit);
 
-    mainContainer.style.display = 'flex';
+} catch (error){
+    lastCity = document.querySelector('.city').innerText;
+    searchInput.classList.add('input-error');
+    errorMessage.style.display = "inline";
+
+    setTimeout(function() {
+        searchInput.classList.remove('input-error');
+        errorMessage.style.display = "none";
+
+    }, 1500);
+
+}
+loadingScreen.style.display = 'none';
+
+
+searchInput.value = '';
+
+
 
 }
 //INITIAL CALL: 
 getWeatherData(true);
 
 
-//once users click on search, the getweatherdata function will call the getFormData func to retrieve the text inputs value
+searchBtn.addEventListener('click', () => {
+    getWeatherData();
+  });
+  
+searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      getWeatherData();
 
+    }
+  });
 
-searchBtn.addEventListener('click', getWeatherData);
-
-unitsFBtn.addEventListener('click', ()=>{
+unitBtnF.addEventListener('click', () => {
     unit = constants.unitInfo.IMPERIAL.name;
     unitChange = true;
     getWeatherData();
     
-    unitsFBtn.style.display = 'none';
-    unitsCBtn.style.display = '';
+    unitBtnF.style.display = 'none';
+    unitBtnC.style.display = 'inline';
 });
 
-unitsCBtn.addEventListener('click', ()=>{
+unitBtnC.addEventListener('click', () => {
     unit = constants.unitInfo.METRIC.name;
     unitChange = true;
     getWeatherData();
     
-    unitsFBtn.style.display = 'none';
-    unitsCBtn.style.display = '';
+    unitBtnC.style.display = 'none';
+    unitBtnF.style.display = 'inline';
 });
 
 themeSwitchBtn.addEventListener('click', () => {
@@ -94,12 +124,17 @@ themeSwitchBtn.addEventListener('click', () => {
 
 
 dailyForecastBtn.addEventListener('click', () => {
+    dailyForecastBtn.classList.add('forecast-switch-selected');
+    hourlyForecastBtn.classList.remove('forecast-switch-selected');
+
     dailyForecastContainer.style.display = 'flex';
     hourlyForecastContainer.style.display = 'none';
 });
 
 
 hourlyForecastBtn.addEventListener('click', () => {
+    hourlyForecastBtn.classList.add('forecast-switch-selected');
+    dailyForecastBtn.classList.remove('forecast-switch-selected');
     hourlyForecastContainer.style.display = 'flex';
     dailyForecastContainer.style.display = 'none';
 });

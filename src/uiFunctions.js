@@ -19,6 +19,8 @@ const cityDate = document.querySelector('.date');
 const cityTime = document.querySelector('.time');
 
 const dailyForecastArray = document.querySelectorAll('.daily');
+const hourlyForecastArray = document.querySelectorAll('.hourly');
+
 
 
 let unitTempDisplay;
@@ -41,7 +43,7 @@ function renderLocalisationInfo(weather){
 
     cityName.innerText = weather.name;
     cityDate.innerText = utils.getDate(weather.current.dt);
-    cityTime.innerText = utils.getTime(weather.current.dt);
+    cityTime.innerText = utils.getHourMinutes(weather.current.dt);
 
 }
 
@@ -59,8 +61,20 @@ function renderDailyForecast(weather){
     }
 }
 
+
+//TODO: for now, only 8 hours are shown. API gives us 24, so ideally we would have 3 pages of 8h each so that user can scroll through
 function renderHourlyForecast(weather){
 
+    for (let i = 0; i < hourlyForecastArray.length; i++){
+
+        // we are ignoring the first 'hourly' weather object, as it is the same as the 'current' weather
+        let weatherDataIndex = i+1;
+
+        hourlyForecastArray[i].querySelector('.hourly-hour').innerText = utils.getHour(weather.hourly[weatherDataIndex].dt);
+        hourlyForecastArray[i].querySelector('.hourly-temp').innerText = utils.formatTemp(weather.hourly[weatherDataIndex].temp);
+        //todo icon
+
+    }
 }
 
 
@@ -72,6 +86,7 @@ function renderWeatherData(weather){
     renderCurrentWeather(weather);
     renderLocalisationInfo(weather);
     renderDailyForecast(weather);
+    renderHourlyForecast(weather);
 
 }
 
