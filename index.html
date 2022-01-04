@@ -53,23 +53,25 @@
                 <div class="date"></div>
                 <div class="time"></div>
                 <div class="options-container">
-                    <div class="theme">Light Mode</div>
-                    <div class="units" id="unitsC">Switch to °C</div>
-                    <div class="units" id="unitsF">Switch to °F</div>
+                    <div class="theme btn">Light Mode</div>
+                    <div class="units btn" id="unitC">Switch to °C</div>
+                    <div class="units btn" id="unitF">Switch to °F</div>
                     <div class="options-search-container">
-                        <input type="text" placeholder="  Search..." class="search" id="srch">
-                        <span class="fa-stack options-search-btn" style="vertical-align: top;">
+                        <input type="text" placeholder="Search..." class="search" id="srch">
+                        <span class="fa-stack options-search-btn btn" style="vertical-align: top;">
                             <i class="far fa-circle fa-stack-2x"></i>
                             <i class="fas fa-search fa-stack-1x"></i>
                         </span>
                     </div>
+                    <div class="error-message">City not found</div>
+
                 </div>
             </div>
         </div>
 
         <div class="forecast-switch-container">
-            <div class="forecast-switch" id="daily">daily</div>
-            <div class="forecast-switch" id="hourly">Hourly</div>
+            <div class="forecast-switch forecast-switch-selected btn" id="daily">Daily</div>
+            <div class="forecast-switch btn" id="hourly">Hourly</div>
         </div>
         <div class="hourly-container">
             <div class="hourly">
@@ -158,6 +160,7 @@
             </div>
         </div>
     </div>
+    <div class="loading-screen">Loading...</div>
 </body>
 <script src="main.js"></script>
 
