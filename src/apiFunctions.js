@@ -20,7 +20,6 @@ function getWeatherForecastUrl(coordinates, units) {
     return `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=minutely,alerts&units=${units}&appid=bb47f2dd8a7d411cc47497189075f8a6`;
 }
 
-//TODO: try catch, need to show error on screen if call gets error (no city found)
 async function getCoordinates(url) {
     try {
         const response = await fetch(url);

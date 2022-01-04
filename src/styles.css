@@ -58,8 +58,11 @@ body, html {
 }
 
 .detail-icon{
+    text-align: center;
+    display: inline-block;
     width: 70px;
     height: 70px;
+    line-height: 70px;
 }
 
 .detail-info-container{

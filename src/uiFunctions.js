@@ -31,7 +31,8 @@ function renderCurrentWeather(weather){
     const currentWeather = weather.current;
 
     currentWeatherDesc.innerText = utils.capitalizeEachWord(currentWeather.weather[0].description);
-    //todo icon
+    currentWeatherIcon.classList.add(utils.getIcon(currentWeather.weather[0].icon));
+
     currentWeatherTemp.innerText = utils.formatTemp(currentWeather.temp);
     feelsLike.innerText = utils.formatTemp(currentWeather.feels_like);
     humidity.innerText = currentWeather.humidity + "%";
@@ -56,7 +57,7 @@ function renderDailyForecast(weather){
         dailyForecastArray[i].querySelector('.daily-day').innerText = utils.getWeekDay(weather.daily[weatherDataIndex].dt);
         dailyForecastArray[i].querySelector('.daily-temp').innerText = utils.formatTemp(weather.daily[weatherDataIndex].temp.day);
         dailyForecastArray[i].querySelector('.daily-low-temp').innerText = utils.formatTemp(weather.daily[weatherDataIndex].temp.min);
-        //todo icon
+        dailyForecastArray[i].querySelector('.daily-icon').classList.add(utils.getIcon(weather.daily[weatherDataIndex].weather[0].icon));
 
     }
 }
@@ -72,7 +73,7 @@ function renderHourlyForecast(weather){
 
         hourlyForecastArray[i].querySelector('.hourly-hour').innerText = utils.getHour(weather.hourly[weatherDataIndex].dt);
         hourlyForecastArray[i].querySelector('.hourly-temp').innerText = utils.formatTemp(weather.hourly[weatherDataIndex].temp);
-        //todo icon
+        hourlyForecastArray[i].querySelector('.hourly-icon').classList.add(utils.getIcon(weather.hourly[weatherDataIndex].weather[0].icon));
 
     }
 }

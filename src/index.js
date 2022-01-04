@@ -85,7 +85,7 @@ searchInput.value = '';
 
 
 }
-//INITIAL CALL: 
+// initial call: 
 getWeatherData(true);
 
 
@@ -119,7 +119,7 @@ unitBtnC.addEventListener('click', () => {
 });
 
 themeSwitchBtn.addEventListener('click', () => {
-//TODO: change bg , transition etc
+//TODO: change bg , transition 
 });
 
 
@@ -139,13 +139,6 @@ hourlyForecastBtn.addEventListener('click', () => {
     dailyForecastContainer.style.display = 'none';
 });
 
-
-//here: add event listener oncity search button, fire up getWeatherData so that it ca take the city from input
-//here: event listener to switch from daily forecast to hourly forecast
-//here event listener for switch to metric, switch to imperial AND theme
-
-//FUNCTIONS THAT DO NOT NEED API CALL SHOULD BE CALLED FROM THE UI FILE
-//ONLY MAIN GETWEATHERDATA SHOULD CALL API FUNCTIONS, IT IS THE MAIN WORKFLOW THAT GETS DATA AND TELLS UI TO RENDER IT
 
 export {
     unit,
