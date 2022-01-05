@@ -15,9 +15,10 @@
         <div class="weather-container">
             <div class="weather-main-info-left">
                 <div class="main-desc"></div>
-                <i class="main-temp-icon fas fa-4x"></i>
-
-                <div class="main-temp"></div>
+                <div class="main-temp-container">
+                    <div class="main-temp"></div>
+                    <i class="main-temp-icon fas fa-4x"></i>
+                </div>
                 <div class="main-details-container">
                     <div class="detail">
                         <i class="detail-icon fas fa-temperature-high fa-3x"></i>
@@ -54,12 +55,12 @@
                 <div class="date"></div>
                 <div class="time"></div>
                 <div class="options-container">
-                    <div class="theme btn">Light Mode</div>
-                    <div class="units btn" id="unitC">Switch to °C</div>
-                    <div class="units btn" id="unitF">Switch to °F</div>
+                    <div class="btn" id="theme">Light Mode</div>
+                    <div class="btn" id="unitC">Switch to °C</div>
+                    <div class="btn" id="unitF">Switch to °F</div>
                     <div class="options-search-container">
                         <input type="text" placeholder="Search..." class="search" id="srch">
-                        <span class="fa-stack options-search-btn btn" style="vertical-align: top;">
+                        <span class="fa-stack options-search-btn" style="vertical-align: top;">
                             <i class="far fa-circle fa-stack-2x"></i>
                             <i class="fas fa-search fa-stack-1x"></i>
                         </span>
@@ -69,96 +70,96 @@
                 </div>
             </div>
         </div>
-
-        <div class="forecast-switch-container">
-            <div class="forecast-switch forecast-switch-selected btn" id="daily">Daily</div>
-            <div class="forecast-switch btn" id="hourly">Hourly</div>
-        </div>
-        <div class="hourly-container">
-            <div class="hourly">
-                <div class="hourly-hour">12 pm</div>
-                <div class="hourly-temp">-5 °C</div>
-                <i class="hourly-icon fas fa-3x"></i>
+        <div class="forecast-container">
+            <div class="switch-container">
+                <div class="forecast-switch forecast-switch-selected btn" id="daily">Daily</div>
+                <div class="forecast-switch btn" id="hourly">Hourly</div>
             </div>
-            <div class="hourly">
-                <div class="hourly-hour">1 pm</div>
-                <div class="hourly-temp">-5 °C</div>
-                <i class="hourly-icon fas fa-3x"></i>
+            <div class="hourly-container">
+                <div class="hourly">
+                    <div class="hourly-hour"></div>
+                    <div class="hourly-temp"></div>
+                    <i class="hourly-icon fas fa-3x"></i>
+                </div>
+                <div class="hourly">
+                    <div class="hourly-hour"></div>
+                    <div class="hourly-temp"></div>
+                    <i class="hourly-icon fas fa-3x"></i>
+                </div>
+                <div class="hourly">
+                    <div class="hourly-hour"></div>
+                    <div class="hourly-temp"></div>
+                    <i class="hourly-icon fas fa-3x"></i>
+                </div>
+                <div class="hourly">
+                    <div class="hourly-hour"></div>
+                    <div class="hourly-temp"></div>
+                    <i class="hourly-icon fas fa-3x"></i>
+                </div>
+                <div class="hourly">
+                    <div class="hourly-hour"></div>
+                    <div class="hourly-temp">-8 °C</div>
+                    <i class="hourly-icon fas fa-3x"></i>
+                </div>
+                <div class="hourly">
+                    <div class="hourly-hour"></div>
+                    <div class="hourly-temp"></div>
+                    <i class="hourly-icon fas fa-3x"></i>
+                </div>
+                <div class="hourly">
+                    <div class="hourly-hour"></div>
+                    <div class="hourly-temp"></div>
+                    <i class="hourly-icon fas fa-3x"></i>
+                </div>
+                <div class="hourly">
+                    <div class="hourly-hour"></div>
+                    <div class="hourly-temp"></div>
+                    <i class="hourly-icon fas fa-3x"></i>
+                </div>
             </div>
-            <div class="hourly">
-                <div class="hourly-hour">2 pm</div>
-                <div class="hourly-temp">-8 °C</div>
-                <i class="hourly-icon fas fa-3x"></i>
-            </div>
-            <div class="hourly">
-                <div class="hourly-hour">3 pm</div>
-                <div class="hourly-temp">-7 °C</div>
-                <i class="hourly-icon fas fa-3x"></i>
-            </div>
-            <div class="hourly">
-                <div class="hourly-hour">4 pm</div>
-                <div class="hourly-temp">-8 °C</div>
-                <i class="hourly-icon fas fa-3x"></i>
-            </div>
-            <div class="hourly">
-                <div class="hourly-hour">5 pm</div>
-                <div class="hourly-temp">-8 °C</div>
-                <i class="hourly-icon fas fa-3x"></i>
-            </div>
-            <div class="hourly">
-                <div class="hourly-hour">6 pm</div>
-                <div class="hourly-temp" >-9 °C</div>
-                <i class="hourly-icon fas fa-3x"></i>
-            </div>
-            <div class="hourly">
-                <div class="hourly-hour">7 pm</div>
-                <div class="hourly-temp">-10 °C</div>
-                <i class="hourly-icon fas fa-3x"></i>
-            </div>
-        </div>
-        <div class="daily-container">
-            <div class="daily">
-                <div class="daily-day"></div>
-                <div class="daily-temp" id="highdaily"></div>
-                <div class="daily-low-temp" id="lowdaily"></div>
-                <i class="daily-icon fas fa-3x"></i>
-            </div>
-            <div class="daily">
-                <div class="daily-day"></div>
-                <div class="daily-temp" id="highdaily"></div>
-                <div class="daily-low-temp" id="lowdaily"></div>
-                <i class="daily-icon fas fa-3x"></i>
-            </div>
-            <div class="daily">
-                <div class="daily-day"></div>
-                <div class="daily-temp" id="highdaily"></div>
-                <div class="daily-low-temp" id="lowdaily"></div>
-                <i class="daily-icon fas fa-3x"></i>
-            </div>
-            <div class="daily">
-                <div class="daily-day"></div>
-                <div class="daily-temp" id="highdaily"></div>
-                <div class="daily-low-temp" id="lowdaily"></div>
-                <i class="daily-icon fas fa-3x"></i>
-            </div>
-            <div class="daily">
-                <div class="daily-day"></div>
-                <div class="daily-temp" id="highdaily"></div>
-                <div class="daily-low-temp" id="lowdaily"></div>
-                <i class="daily-icon fas fa-3x"></i>
-            </div>
-            <div class="daily">
-                <div class="daily-day"></div>
-                <div class="daily-temp" id="highdaily"></div>
-                <div class="daily-low-temp" id="lowdaily"></div>
-                <i class="daily-icon fas fa-3x"></i>
-
-            </div>
-            <div class="daily">
-                <div class="daily-day"></div>
-                <div class="daily-temp" id="highdaily">-5 °C</div>
-                <div class="daily-low-temp" id="lowdaily"></div>
-                <i class="daily-icon fas fa-3x"></i>
+            <div class="daily-container">
+                <div class="daily">
+                    <div class="daily-day"></div>
+                    <div class="daily-temp" id="highdaily"></div>
+                    <div class="daily-low-temp" id="lowdaily"></div>
+                    <i class="daily-icon fas fa-3x"></i>
+                </div>
+                <div class="daily">
+                    <div class="daily-day"></div>
+                    <div class="daily-temp" id="highdaily"></div>
+                    <div class="daily-low-temp" id="lowdaily"></div>
+                    <i class="daily-icon fas fa-3x"></i>
+                </div>
+                <div class="daily">
+                    <div class="daily-day"></div>
+                    <div class="daily-temp" id="highdaily"></div>
+                    <div class="daily-low-temp" id="lowdaily"></div>
+                    <i class="daily-icon fas fa-3x"></i>
+                </div>
+                <div class="daily">
+                    <div class="daily-day"></div>
+                    <div class="daily-temp" id="highdaily"></div>
+                    <div class="daily-low-temp" id="lowdaily"></div>
+                    <i class="daily-icon fas fa-3x"></i>
+                </div>
+                <div class="daily">
+                    <div class="daily-day"></div>
+                    <div class="daily-temp" id="highdaily"></div>
+                    <div class="daily-low-temp" id="lowdaily"></div>
+                    <i class="daily-icon fas fa-3x"></i>
+                </div>
+                <div class="daily">
+                    <div class="daily-day"></div>
+                    <div class="daily-temp" id="highdaily"></div>
+                    <div class="daily-low-temp" id="lowdaily"></div>
+                    <i class="daily-icon fas fa-3x"></i>
+                </div>
+                <div class="daily">
+                    <div class="daily-day"></div>
+                    <div class="daily-temp" id="highdaily"></div>
+                    <div class="daily-low-temp" id="lowdaily"></div>
+                    <i class="daily-icon fas fa-3x"></i>
+                </div>
             </div>
         </div>
     </div>

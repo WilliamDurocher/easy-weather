@@ -1,63 +1,89 @@
-html{
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    background: url('./assets/bg_dark.jpg') no-repeat center center fixed; 
+html {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: url('./assets/bg_dark.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    color: white;
+    color: whitesmoke;
 }
 
 body, html {
     margin: 0;
-  }
-.main-container{
+    height: 100%;
+    width: 100%;
+}
 
-
+.main-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
-
+    padding: 4rem;
+    width: 100vw;
+    height: 100%;
+    min-height: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
-.weather-container{
+/* todo media here */
+.weather-container {
     display: flex;
     justify-content: space-between;
-    padding: 4rem;
 }
 
 
-.main-desc{
+
+.main-desc {
     font-size: 42px;
-    font-weight: 600;
+    font-weight: 700;
+    padding-bottom: 1rem;
 }
 
-.main-temp-icon{
+
+.main-temp-container {
+    display: flex;
+    gap: 3rem;
+}
+
+.main-temp-icon {
     width: 80px;
     height: 80px;
+    line-height: 80px;
 }
 
-.main-temp{
+.main-temp {
     font-size: 36px;
-    font-weight: 700;
+    font-weight: 800;
+    height: 60px;
+    line-height: 60px;
+    border: 2px solid white;
+    border-radius: 15px;
+    width: auto;
+    padding: 0 10px;
+    text-align: center;
+    align-self: center;
+    white-space: nowrap;
 }
 
 
 
 /*** DETAIL SECTION ***/
 
-.main-details-container{
+.main-details-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
+    padding-top: 2rem;
 }
-.detail{
+
+.detail {
     display: flex;
     flex-direction: row;
 }
 
-.detail-icon{
+.detail-icon {
     text-align: center;
     display: inline-block;
     width: 70px;
@@ -65,55 +91,69 @@ body, html {
     line-height: 70px;
 }
 
-.detail-info-container{
+.detail-info-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.detail-name{
-    font-size: 14px;
+
+.detail-name {
+    font-size: 15px;
     margin-bottom: 10px;
+    font-weight: 600;
 }
-.detail-value{
+
+.detail-value {
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 /*** MAIN-RIGHT ***/
 
-.city{
+.city {
     font-size: 30px;
     font-weight: 600;
 }
-.date, .time{
-font-size: 24px;
+
+.date, .time {
+    font-size: 24px;
 }
 
 /*** OPTIONS CONTAINER***/
 
-.options-container{
+.options-container {
     display: grid;
     gap: 20px;
+    margin-top: 50px;
+
 
 }
 
-.options-search-container
-{
+.options-search-container {
     display: flex;
     gap: 5px;
 }
 
-.search{
+.options-search-container>span:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.search {
     height: 30px;
     width: 150px;
     border-radius: 7px;
     box-shadow: none;
     border: none;
+    padding-left: 7px;
+
 }
-.search::placeholder{
+
+.search::placeholder {
     font-size: 16px;
 
 }
+
 
 .input-error {
     position: relative;
@@ -122,17 +162,22 @@ font-size: 24px;
 }
 
 @keyframes shake {
-    0% { left: -3px; }
-    100% { right: -3px; }
+    0% {
+        left: -3px;
+    }
+
+    100% {
+        right: -3px;
+    }
 }
 
-.error-message{
+.error-message {
     margin-top: -15px;
     font-weight: 600;
     display: none;
 }
 
-.units{
+.btn {
     width: 100px;
     height: 25px;
     border: 2px solid white;
@@ -142,25 +187,32 @@ font-size: 24px;
     line-height: 25px;
     font-weight: 600;
 }
+.btn:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
 
-#unitC{
+#unitC {
 
     display: none;
 }
-#unitF{
+
+#unitF {
     display: inline;
 }
-.theme{
-    margin-top: 50px;
-}
+
 
 /*** FORECAST SWITCH CONTAINER ***/
-.forecast-switch-container{
+
+.forecast-container {}
+
+.switch-container {
     display: flex;
-    padding-left: 6rem;
     gap: 10px;
+    padding-bottom: 15px;
 }
-.forecast-switch{
+
+.forecast-switch {
     width: 65px;
     height: 25px;
     border: 2px solid white;
@@ -170,7 +222,8 @@ font-size: 24px;
     line-height: 25px;
     font-weight: 600;
 }
-.forecast-switch-selected{
+
+.forecast-switch-selected {
     background-color: white;
     color: black;
 
@@ -179,55 +232,68 @@ font-size: 24px;
 
 /*** daily ***/
 
-.daily-container{
+.daily-container {
     display: flex;
     text-align: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     padding-top: auto;
-    padding-bottom: 4rem;
 }
-.daily-day{
+
+.daily {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.daily-day {
     font-size: 22px;
     font-weight: 600;
     margin-bottom: 5px;
 }
-.daily-high-value{
+
+.daily-temp {
     font-size: 28px;
-    font-weight: 700;
+    font-weight: 800;
 }
-.daily-low-value{
-    font-size: 18px;
+
+.daily-low-temp {
+    font-size: 15px;
 }
 
 /*** HOURLY ***/
 
-.hourly-container{
+.hourly-container {
     display: none;
     text-align: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     padding-top: auto;
-    padding-bottom: 4rem;
 }
 
-.hourly-hour{
+.hourly {
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+}
+
+.hourly-hour {
     font-weight: 600;
-    font-size: 18px;
+    font-size: 22px;
 }
 
-.hourly-temp{
-    font-weight: 700;
-    font-size: 24px;
+.hourly-temp {
+    font-weight: 800;
+    font-size: 28px;
 }
 
-.hourly-icon{}
+.hourly-icon {}
 
-.btn:hover{
+.btn:hover {
     cursor: pointer;
     transform: scale(1.1);
 
 }
 
-.loading-screen{
+.loading-screen {
     display: none;
     position: fixed;
     left: 0;
@@ -245,4 +311,33 @@ font-size: 24px;
     line-height: 100vh;
     font-size: 42px;
     font-weight: 700;
+}
+
+@media (max-width: 1300px){
+    .main-container{
+        padding: 3.5rem;
+    }
+}
+@media (max-width: 1200px){
+    .main-container{
+        padding: 3rem;
+    }
+}
+
+@media (max-width: 1100px){
+    .main-container{
+        padding: 2.5rem;
+    }
+}
+@media (max-width: 1000px){
+    .main-container{
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 550px) {
+    .daily-container, .hourly-container {
+        flex-direction: column;
+        align-items: center;
+    }
 }
