@@ -27,3 +27,6 @@
 ## Deployed on GitHub Pages
 
 Deployed on [GitHub Pages](https://pages.github.com/) 
+
+## Attribution
+### This project uses icons from [Font Awesome](https://fontawesome.com/)  under the Creative Commons Attribution 4.0 International license.
