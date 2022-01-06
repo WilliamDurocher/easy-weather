@@ -2,109 +2,108 @@ import './styles.css';
 import * as apiFunc from './apiFunctions';
 import * as uiFunc from './uiFunctions';
 import * as constants from './constants';
-//Default variables initialization
 
+
+//Default variables initialization
+const root = document.querySelector(':root');
+const rootStyles = getComputedStyle(root);
 
 const loadingScreen = document.querySelector('.loading-screen');
+
+// buttons section
 const searchBtn = document.querySelector('.options-search-btn');
 const searchInput = document.querySelector('.search');
 const errorMessage = document.querySelector('.error-message');
 const unitBtnC = document.getElementById('unitC');
 const unitBtnF = document.getElementById('unitF');
-const themeSwitchBtn = document.getElementById('theme');
+const lightThemeBtn = document.getElementById('themeLight');
+const darkThemeBtn = document.getElementById('themeDark');
+
+// forecast section
 const dailyForecastBtn = document.getElementById('daily');
 const hourlyForecastBtn = document.getElementById('hourly');
 const dailyForecastContainer = document.querySelector('.daily-container');
 const hourlyForecastContainer = document.querySelector('.hourly-container');
 
 
-//default vals
+// default values
 let unit = constants.unitInfo.METRIC.name;
 let lastCity = constants.DEFAULT_CITY;
 let unitChange = false;
 
-/**
- *TODO: main application function, gets the weather data from API and sends it to the ui.js fonction that will render the data
- * put in try catch 
- * TODO: while this function is running, have a splash screen with 3 dots or loading circle that deactivates the UI while the data is loading
- * @params
- *  unit: metric or imperial - metric by default
- *  intial load = false
- */
-async function getWeatherData(InitialLoad = false){
 
-    try{
+async function getWeatherData(InitialLoad = false) {
+    try {
 
-    loadingScreen.style.display = 'block';
+        loadingScreen.style.display = 'block';
 
-    let cityName = InitialLoad ? constants.DEFAULT_CITY : apiFunc.getFormData();
+        let cityName = InitialLoad ? constants.DEFAULT_CITY : apiFunc.getFormData();
 
-    if (unitChange){
-        cityName = lastCity;
-        unitChange = false;
+        if (unitChange) {
+            cityName = lastCity;
+            unitChange = false;
+        }
+
+        // do nothing if search btn is clicked with no text
+        if (!cityName) {
+            loadingScreen.style.display = 'none';
+            return;
+        }
+
+        // need to keep the previous city in memory in case user switches units, which require a new api call 
+        lastCity = cityName;
+
+
+        // api calls, get coordinates first, then send them to second call
+        const requestCoordsUrl = apiFunc.getCoordinatesUrl(cityName);
+        const coords = await apiFunc.getCoordinates(requestCoordsUrl);
+
+        //call that gives us all needed data to show page
+        const requestWeatherUrl = apiFunc.getWeatherForecastUrl(coords, unit);
+        const weather = await apiFunc.getWeatherForecast(requestWeatherUrl);
+
+        weather.name = coords.name;
+        weather.country = coords.country;
+
+        uiFunc.renderWeatherData(weather, unit);
+
+    } catch (error) {
+        //if city does not exist, we still have to keep the old one in memory
+        lastCity = document.querySelector('.city').innerText;
+        searchInput.classList.add('input-error');
+        errorMessage.style.display = "inline";
+
+        setTimeout(function () {
+            searchInput.classList.remove('input-error');
+            errorMessage.style.display = "none";
+        }, 1500);
+
     }
-
-    //do nothing if search btn is clicked with no text
-    if (!cityName){
-        loadingScreen.style.display = 'none';
-        return;
-    }
+    loadingScreen.style.display = 'none';
 
 
-    //If we need to change the unit, we don't want to lose the city we had in the first place
-    lastCity = cityName;
-
-    const requestCoordsUrl = apiFunc.getCoordinatesUrl(cityName);
-    const coords =  await apiFunc.getCoordinates(requestCoordsUrl);
-
-    const requestWeatherUrl = apiFunc.getWeatherForecastUrl(coords, unit);
-    const weather = await apiFunc.getWeatherForecast(requestWeatherUrl);
- 
-    weather.name = coords.name;
-    weather.country = coords.country;
-
-    uiFunc.renderWeatherData(weather, unit);
-
-} catch (error){
-    lastCity = document.querySelector('.city').innerText;
-    searchInput.classList.add('input-error');
-    errorMessage.style.display = "inline";
-
-    setTimeout(function() {
-        searchInput.classList.remove('input-error');
-        errorMessage.style.display = "none";
-
-    }, 1500);
-
+    searchInput.value = '';
 }
-loadingScreen.style.display = 'none';
 
-
-searchInput.value = '';
-
-
-
-}
-// initial call: 
+// initial call that renders screen with default city
 getWeatherData(true);
-
 
 searchBtn.addEventListener('click', () => {
     getWeatherData();
-  });
-  
+});
+
+// keyboard enter event 
 searchInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
-      getWeatherData();
-
+        getWeatherData();
     }
-  });
+});
 
 unitBtnF.addEventListener('click', () => {
     unit = constants.unitInfo.IMPERIAL.name;
     unitChange = true;
     getWeatherData();
-    
+
     unitBtnF.style.display = 'none';
     unitBtnC.style.display = 'inline';
 });
@@ -113,15 +112,27 @@ unitBtnC.addEventListener('click', () => {
     unit = constants.unitInfo.METRIC.name;
     unitChange = true;
     getWeatherData();
-    
+
     unitBtnC.style.display = 'none';
     unitBtnF.style.display = 'inline';
 });
 
-themeSwitchBtn.addEventListener('click', () => {
-//TODO: change bg , transition 
+darkThemeBtn.addEventListener('click', () => {
+    lightThemeBtn.style.display = 'inline';
+    darkThemeBtn.style.display = 'none';
+
+    document.querySelector('html').style.background = rootStyles.getPropertyValue('--bg-dark');
+
 });
 
+lightThemeBtn.addEventListener('click', () => {
+    lightThemeBtn.style.display = 'none';
+    darkThemeBtn.style.display = 'inline';
+
+    document.querySelector('html').style.background = rootStyles.getPropertyValue('--bg-light');
+
+
+});
 
 dailyForecastBtn.addEventListener('click', () => {
     dailyForecastBtn.classList.add('forecast-switch-selected');
@@ -138,7 +149,6 @@ hourlyForecastBtn.addEventListener('click', () => {
     hourlyForecastContainer.style.display = 'flex';
     dailyForecastContainer.style.display = 'none';
 });
-
 
 export {
     unit,

@@ -1,6 +1,8 @@
 import { unitWindDisplay, unitTempDisplay } from "./uiFunctions";
 import * as constants from './constants'
 
+// using UNIX timestamp given by API, we can format our date and time however we want. these are pretty specific utils but could be used anywhere
+
 function getDate(unixTimestamp) {
     return new Date(unixTimestamp * 1000).toLocaleDateString('en-US', { weekday: "long", year: "numeric", month: "long", day: "numeric" });
 }
@@ -15,7 +17,6 @@ function getHourMinutes(unixTimestamp) {
 
 function getHour(unixTimestamp) {
     return new Date(unixTimestamp * 1000).toLocaleTimeString('en-US', { hour: 'numeric', hour12: true }).toLowerCase();
-
 }
 
 function formatTemp(temp) {
@@ -47,7 +48,7 @@ function formatCityName(str) {
         .replace(/\s+/g, '+');
 }
 
-
+// switch statement that looks for the original codes from openWeather API, and returns FA icons.
 function getIcon(iconCode) {
     switch (iconCode) {
         case "01n":
@@ -81,7 +82,6 @@ function getIcon(iconCode) {
             return;
     }
 }
-
 export {
     formatTemp,
     formatWindSpeed,

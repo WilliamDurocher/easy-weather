@@ -1,8 +1,9 @@
 
+// Constants variables
 
 const DEFAULT_CITY = 'Montreal';
 
-const unitInfo ={
+const unitInfo = {
     IMPERIAL: {
         name: "imperial",
         temp_display: " °F",

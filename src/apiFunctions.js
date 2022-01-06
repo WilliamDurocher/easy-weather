@@ -20,6 +20,8 @@ function getWeatherForecastUrl(coordinates, units) {
     return `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=minutely,alerts&units=${units}&appid=bb47f2dd8a7d411cc47497189075f8a6`;
 }
 
+
+//first call that gives us current weather, is only used to get coordinates, which gets us access to other api with more data
 async function getCoordinates(url) {
     try {
         const response = await fetch(url);
@@ -36,13 +38,14 @@ async function getCoordinates(url) {
     }
 }
 
+//gets current weather, 7 day and 24h forecast
 async function getWeatherForecast(url) {
-    try{
+    try {
         const response = await fetch(url);
         const weatherData = await response.json();
-    
+
         return weatherData;
-    }catch (error){
+    } catch (error) {
         console.error(error);
 
     }
